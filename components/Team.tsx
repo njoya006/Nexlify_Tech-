@@ -29,6 +29,7 @@ const TEAM: Member[] = [
     accent:    CYAN,
     accentRgb: "0,245,255",
     gradient:  "linear-gradient(135deg, rgba(0,245,255,0.18) 0%, rgba(123,47,255,0.22) 100%)",
+    photo:     "/assets/Njoya.jpeg",
     socials:   [{ platform: "Li", label: "LinkedIn" }, { platform: "X", label: "X / Twitter" }],
   },
   {
@@ -39,6 +40,7 @@ const TEAM: Member[] = [
     accent:    VIOLET,
     accentRgb: "123,47,255",
     gradient:  "linear-gradient(135deg, rgba(123,47,255,0.22) 0%, rgba(0,245,255,0.16) 100%)",
+    photo:     "/assets/Bright.jpeg",
     socials:   [{ platform: "Li", label: "LinkedIn" }, { platform: "X", label: "X / Twitter" }],
   },
   {
@@ -59,6 +61,7 @@ const TEAM: Member[] = [
     accent:    CYAN,
     accentRgb: "0,245,255",
     gradient:  "linear-gradient(135deg, rgba(0,245,255,0.16) 0%, rgba(255,45,120,0.14) 100%)",
+    photo:     "/assets/Precious.jpeg",
     socials:   [{ platform: "Li", label: "LinkedIn" }],
   },
   {
@@ -90,6 +93,7 @@ const TEAM: Member[] = [
     accent:    CYAN,
     accentRgb: "0,245,255",
     gradient:  "linear-gradient(135deg, rgba(0,245,255,0.14) 0%, rgba(123,47,255,0.18) 100%)",
+    photo:     "/assets/Lum.jpeg",
     socials:   [{ platform: "Li", label: "LinkedIn" }, { platform: "Ig", label: "Instagram" }],
   },
 ];
