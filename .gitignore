@@ -39,3 +39,5 @@ Thumbs.db
 
 # local backup folder (not for deployment)
 _v1_backup/
+
+.vercel
