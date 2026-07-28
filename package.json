@@ -1,0 +1,39 @@
+{
+  "name": "nexlify-tech",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.99.0",
+    "@react-three/fiber": "^8.15.19",
+    "@react-three/postprocessing": "^2.16.2",
+    "framer-motion": "^11.0.8",
+    "gsap": "^3.12.5",
+    "howler": "^2.2.4",
+    "lenis": "^1.0.45",
+    "motion": "^12.34.3",
+    "motion-dom": "^12.34.3",
+    "next": "^14.2.35",
+    "postprocessing": "^6.35.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.11",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/three": "^0.161.2",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
