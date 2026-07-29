@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PROJECTS, type ProjectData } from "@/lib/projects";
 
 function ProjectCard({ p, index, visible }: { p: ProjectData; index: number; visible: boolean }) {
@@ -59,23 +60,42 @@ function ProjectCard({ p, index, visible }: { p: ProjectData; index: number; vis
             }}
           />
 
-          {/* Large project number — watermark */}
-          <span
-            aria-hidden="true"
-            style={{
-              position:      "absolute",
-              bottom:        "-0.1em",
-              right:         "1rem",
-              fontFamily:    "var(--font-display)",
-              fontSize:      "5.5rem",
-              color:         `rgba(${p.accentRgb},0.10)`,
-              lineHeight:    1,
-              userSelect:    "none",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {p.num}
-          </span>
+          {/* Project logo — shown when available */}
+          {p.logo ? (
+            <div style={{
+              position: "absolute", inset: 0,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              padding: "1.5rem",
+            }}>
+              <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                <Image
+                  src={p.logo}
+                  alt={`${p.title} logo`}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 33vw"
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            </div>
+          ) : (
+            /* Large project number — watermark (shown when no logo) */
+            <span
+              aria-hidden="true"
+              style={{
+                position:      "absolute",
+                bottom:        "-0.1em",
+                right:         "1rem",
+                fontFamily:    "var(--font-display)",
+                fontSize:      "5.5rem",
+                color:         `rgba(${p.accentRgb},0.10)`,
+                lineHeight:    1,
+                userSelect:    "none",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {p.num}
+            </span>
+          )}
 
           {/* Category badge */}
           <div

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { ProjectData } from "@/lib/projects";
 
 /* ── Custom cursor (duplicated from Hero so the detail page works standalone) ── */
@@ -282,6 +283,22 @@ export default function ProjectDetail({ project: p }: { project: ProjectData }) 
           padding:"0 clamp(1.5rem,5vw,4rem) 2.75rem",
           maxWidth:"1100px", margin:"0 auto", width:"100%",
         }}>
+          {/* Project logo */}
+          {p.logo && (
+            <div style={{
+              position: "relative", width: "clamp(120px,18vw,200px)", height: "clamp(60px,9vw,100px)",
+              marginBottom: "1.25rem",
+            }}>
+              <Image
+                src={p.logo}
+                alt={`${p.title} logo`}
+                fill
+                sizes="200px"
+                style={{ objectFit: "contain", objectPosition: "left center" }}
+              />
+            </div>
+          )}
+
           {/* Badges */}
           <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", marginBottom:"1rem", flexWrap:"wrap" }}>
             <span style={{

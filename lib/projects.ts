@@ -25,6 +25,7 @@ export interface ProjectData {
   features:   string[];
   role:       string;
   status:     string;
+  logo?:      string;
 }
 
 export const PROJECTS: ProjectData[] = [
@@ -103,6 +104,7 @@ export const PROJECTS: ProjectData[] = [
     ],
     role:   "Cloud Architecture, Database & Security, CI/CD Pipeline Design, System Design",
     status: "Production-grade architecture complete. Kubernetes self-healing live-demonstrated.",
+    logo:   "/assets/Lawbridge.jpeg",
   },
 
   {
