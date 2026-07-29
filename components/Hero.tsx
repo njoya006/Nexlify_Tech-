@@ -250,6 +250,37 @@ function useCursor() {
   }, []);
 }
 
+// --- Text Scramble Hook ---
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+
+function useScramble(target: string, delay = 0.5) {
+  const [display, setDisplay] = useState(() => target.replace(/[A-Z0-9]/g, () => CHARS[Math.floor(Math.random() * CHARS.length)]));
+  useEffect(() => {
+    let frame = 0;
+    const totalFrames = 22;
+    const startDelay  = Math.round(delay * 60);
+    let   elapsed     = 0;
+    const raf = { current: 0 };
+
+    const tick = () => {
+      elapsed++;
+      if (elapsed < startDelay) { raf.current = requestAnimationFrame(tick); return; }
+      frame++;
+      const progress = frame / totalFrames;
+      setDisplay(target.split("").map((ch, i) => {
+        if (ch === " " || ch === "\n") return ch;
+        const revealed = i < Math.floor(progress * target.length);
+        return revealed ? ch : CHARS[Math.floor(Math.random() * CHARS.length)];
+      }).join(""));
+      if (frame < totalFrames) raf.current = requestAnimationFrame(tick);
+      else setDisplay(target);
+    };
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [target, delay]);
+  return display;
+}
+
 // --- Hero ---
 export default function Hero() {
   useCursor();
@@ -257,6 +288,8 @@ export default function Hero() {
   const soundMgr = useRef(new SoundManager());
   const [soundActive, setSoundActive] = useState(false);
   const [visible, setVisible]         = useState(false);
+  const scrambleA = useScramble("NEXLIFY", 0.55);
+  const scrambleB = useScramble("TECH",    0.80);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -351,7 +384,7 @@ export default function Hero() {
                 animate={{ opacity: visible ? 1 : 0, y: 0 }}
                 transition={{ delay: 0.20, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               >
-                NEXLIFY<br />TECH
+                {scrambleA}<br />{scrambleB}
               </motion.h1>
 
               {/* Tagline */}
